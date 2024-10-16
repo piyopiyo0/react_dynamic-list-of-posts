@@ -10,17 +10,19 @@ interface CommentItemProps {
 export const CommentItem: React.FC<CommentItemProps> = ({ comment }) => {
   const { comments, setComments } = useContext(CommentListContext);
 
-  function handleDeleteButton() {
+  async function handleDelete() {
     const newList = comments.filter(item => item.id !== comment.id);
     const copy = [...comments];
 
     setComments(newList);
 
-    deleteComment(comment.id).catch(() => {
+    try {
+      await deleteComment(comment.id);
+    } catch (error) {
       alert('Failed to delete comment, please try again!');
 
       setComments(copy);
-    });
+    }
   }
 
   return (
@@ -34,7 +36,7 @@ export const CommentItem: React.FC<CommentItemProps> = ({ comment }) => {
           type="button"
           className="delete is-small"
           aria-label="delete"
-          onClick={handleDeleteButton}
+          onClick={handleDelete}
         >
           delete button
         </button>

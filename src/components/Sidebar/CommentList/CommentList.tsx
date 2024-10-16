@@ -38,8 +38,8 @@ export const CommentList: React.FC<CommentListProps> = ({ comments }) => {
             <>
               <p className="title is-4">Comments:</p>
 
-              {comments?.map(item => (
-                <CommentItem key={item.id} comment={item} />
+              {comments?.map(comment => (
+                <CommentItem key={comment.id} comment={comment} />
               ))}
             </>
           )}

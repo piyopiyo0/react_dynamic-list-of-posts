@@ -26,7 +26,7 @@ export const DropdownItem: React.FC<DropdownItemProps> = ({
   const { setIsError } = useContext(ErrorsContext);
   const { setActivePost } = useContext(ActivePostContext);
 
-  function handleMouseDown(
+  function handleMouseDownEvent(
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
   ) {
     event.preventDefault();
@@ -54,7 +54,7 @@ export const DropdownItem: React.FC<DropdownItemProps> = ({
       className={classNames('dropdown-item', {
         'is-active': activeUser?.id === user.id,
       })}
-      onMouseDown={event => handleMouseDown(event)}
+      onMouseDown={handleMouseDownEvent}
     >
       {user.name}
     </a>

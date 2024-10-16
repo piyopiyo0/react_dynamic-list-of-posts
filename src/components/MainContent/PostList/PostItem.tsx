@@ -22,7 +22,7 @@ export const PostItem: React.FC<PostItemProps> = ({ post }) => {
   const { setIsError } = useContext(ErrorsContext);
   const { setIsActiveForm } = useContext(CommentFormContext);
 
-  function handleOpenButton() {
+  function handleOpenButtonClick() {
     if (activePost?.id !== post.id) {
       setActivePost(post);
     } else {
@@ -57,7 +57,7 @@ export const PostItem: React.FC<PostItemProps> = ({ post }) => {
           className={classNames('button is-link', {
             'is-light': activePost?.id !== post.id,
           })}
-          onClick={() => handleOpenButton()}
+          onClick={() => handleOpenButtonClick()}
         >
           {activePost?.id === post.id ? 'Close' : 'Open'}
         </button>

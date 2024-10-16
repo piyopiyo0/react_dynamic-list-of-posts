@@ -12,12 +12,12 @@ type ActiveUser = User | null;
 
 interface ActiveUserContextType {
   activeUser: ActiveUser;
-  setActiveUser: React.Dispatch<SetStateAction<ActiveUser>>;
+  setActiveUser: React.Dispatch<SetStateAction<ActiveUser>> | undefined;
 }
 
 export const ActiveUserContext = createContext<ActiveUserContextType>({
   activeUser: null,
-  setActiveUser: () => {},
+  setActiveUser: undefined,
 });
 
 export const ActiveUserProvider: React.FC<Children> = ({ children }) => {
@@ -34,12 +34,12 @@ export const ActiveUserProvider: React.FC<Children> = ({ children }) => {
 
 interface Loader {
   isLoading: boolean;
-  setIsLoading: React.Dispatch<SetStateAction<boolean>>;
+  setIsLoading: React.Dispatch<SetStateAction<boolean>> | undefined;
 }
 
 export const LoaderContext = createContext<Loader>({
   isLoading: false,
-  setIsLoading: () => {},
+  setIsLoading: undefined,
 });
 
 export const LoaderProvider: React.FC<Children> = ({ children }) => {
@@ -59,12 +59,12 @@ type PostsType = Post[] | null;
 
 interface Posts {
   posts: PostsType;
-  setPosts: React.Dispatch<SetStateAction<PostsType>>;
+  setPosts: React.Dispatch<SetStateAction<PostsType>> | undefined;
 }
 
 export const PostsContext = createContext<Posts>({
   posts: null,
-  setPosts: () => {},
+  setPosts: undefined,
 });
 
 export const PostsProvider: React.FC<Children> = ({ children }) => {
@@ -81,12 +81,12 @@ type Error = ErrorTypes | null;
 
 interface Errors {
   isError: Error;
-  setIsError: React.Dispatch<SetStateAction<Error>>;
+  setIsError: React.Dispatch<SetStateAction<Error>> | undefined;
 }
 
 export const ErrorsContext = createContext<Errors>({
   isError: null,
-  setIsError: () => {},
+  setIsError: undefined,
 });
 
 export const ErrorsProvider: React.FC<Children> = ({ children }) => {
@@ -128,12 +128,12 @@ export const ActivePostProvider: React.FC<Children> = ({ children }) => {
 
 interface CommentList {
   comments: Comment[];
-  setComments: React.Dispatch<SetStateAction<Comment[]>>;
+  setComments: React.Dispatch<SetStateAction<Comment[]>> | undefined;
 }
 
 export const CommentListContext = createContext<CommentList>({
   comments: [],
-  setComments: () => {},
+  setComments: undefined,
 });
 
 export const CommentListProvider: React.FC<Children> = ({ children }) => {
@@ -153,12 +153,12 @@ export const CommentListProvider: React.FC<Children> = ({ children }) => {
 
 interface Form {
   isActiveForm: boolean;
-  setIsActiveForm: React.Dispatch<SetStateAction<boolean>>;
+  setIsActiveForm: React.Dispatch<SetStateAction<boolean>> | undefined;
 }
 
 export const CommentFormContext = createContext<Form>({
   isActiveForm: false,
-  setIsActiveForm: () => {},
+  setIsActiveForm: undefined,
 });
 
 export const CommentFormProvider: React.FC<Children> = ({ children }) => {

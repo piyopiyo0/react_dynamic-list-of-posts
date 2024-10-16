@@ -58,7 +58,7 @@ export const NewCommentForm: React.FC = () => {
     });
   }
 
-  function handleAdd(event: React.FormEvent<HTMLFormElement>) {
+  const handleAdd = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const newError = { ...isErrorField };
@@ -100,10 +100,10 @@ export const NewCommentForm: React.FC = () => {
           setIsProcessing(false);
         });
     }
-  }
+  };
 
   return (
-    <form data-cy="NewCommentForm" onSubmit={event => handleAdd(event)}>
+    <form data-cy="NewCommentForm" onSubmit={handleAdd}>
       <div className="field" data-cy="NameField">
         <label className="label" htmlFor="comment-author-name">
           Author Name
@@ -119,8 +119,8 @@ export const NewCommentForm: React.FC = () => {
             className={classNames('input', {
               'is-danger': isErrorField.nameField,
             })}
-            onChange={e =>
-              onChangeHandler(Keys.nameField, e.target.value.trimStart())
+            onChange={event =>
+              onChangeHandler(Keys.nameField, event.target.value.trimStart())
             }
           />
 
@@ -160,8 +160,8 @@ export const NewCommentForm: React.FC = () => {
             className={classNames('input', {
               'is-danger': isErrorField.emailField,
             })}
-            onChange={e =>
-              onChangeHandler(Keys.emailField, e.target.value.trimStart())
+            onChange={event =>
+              onChangeHandler(Keys.emailField, event.target.value.trimStart())
             }
           />
 
@@ -200,8 +200,8 @@ export const NewCommentForm: React.FC = () => {
             className={classNames('textarea', {
               'is-danger': isErrorField.textArea,
             })}
-            onChange={e =>
-              onChangeHandler(Keys.textArea, e.target.value.trimStart())
+            onChange={event =>
+              onChangeHandler(Keys.textArea, event.target.value.trimStart())
             }
           />
         </div>
@@ -220,6 +220,7 @@ export const NewCommentForm: React.FC = () => {
             className={classNames('button is-link', {
               'is-loading': isProcessing,
             })}
+            disabled={isProcessing}
           >
             Add
           </button>
